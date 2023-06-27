@@ -11,7 +11,7 @@ public class WebClientConfig {
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
-                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer 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")
+                .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer sk-N7SioaLxdgQFGNpGZfDnHT3BlbkFJWVMR2sqJDlaTTpGK7W5")
                 .build();
     }
 }
