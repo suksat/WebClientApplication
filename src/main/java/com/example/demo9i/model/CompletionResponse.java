@@ -9,6 +9,9 @@ public class CompletionResponse {
     private long created;
     private String model;
     private List<CompletionChoice> choices;
+    // List because after key "choices" in JSON response, there is square bracket and then curly bracket,
+    // for example, "choices": [ {
+
     private Usage usage;
 
     public CompletionResponse() {
