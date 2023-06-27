@@ -20,7 +20,7 @@ public class CompletionController {
     }
 
     @PostMapping
-    public Mono<CompletionResponse> getCompletion() {
+    public Mono<String> getCompletion() {
         CompletionRequest request = new CompletionRequest();
         request.setModel("text-davinci-003");
         request.setPrompt("temperature of Nagpur as on today");
@@ -35,6 +35,7 @@ public class CompletionController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(request)
                 .retrieve()
-                .bodyToMono(CompletionResponse.class);
+                .bodyToMono(CompletionResponse.class)
+                .map(CompletionResponse::getText);
     }
 }

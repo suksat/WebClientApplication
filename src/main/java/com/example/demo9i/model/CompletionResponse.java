@@ -1,6 +1,7 @@
 package com.example.demo9i.model;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CompletionResponse {
     private String id;
@@ -69,6 +70,33 @@ public class CompletionResponse {
 
     public void setUsage(Usage usage) {
         this.usage = usage;
+    }
+
+    public String getText() {
+        /*
+        if (choices != null && !choices.isEmpty()) {
+            CompletionChoice choice = choices.get(0);
+            return choice.getText();
+        }
+        return null;
+        */
+        /*
+        return Optional.ofNullable(choices)
+                .filter(choices -> !choices.isEmpty())
+                .map(choices -> choices.get(0))
+                .map(CompletionChoice::getText)
+                .orElse(null);
+        */
+        /*
+        return Optional.ofNullable(choices)
+                .filter(c -> !c.isEmpty())
+                .map(c -> c.get(0).getText())
+                .orElse(null);
+        */
+        return Optional.ofNullable(choices)
+                .map(list -> list.stream().findFirst())
+                .flatMap(choice -> choice.map(CompletionChoice::getText))
+                .orElse(null);
     }
 
     @Override
