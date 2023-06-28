@@ -99,6 +99,7 @@ public class CompletionResponse {
         return Optional.ofNullable(choices)
                 .map(list -> list.stream().findFirst())
                 .flatMap(choice -> choice.map(CompletionChoice::getText))
+                .map(String::trim)
                 .orElse(null);
     }
 

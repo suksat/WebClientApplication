@@ -5,6 +5,7 @@ import com.example.demo9i.model.CompletionResponse;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -20,10 +21,10 @@ public class CompletionController {
     }
 
     @PostMapping
-    public Mono<String> getCompletion() {
+    public Mono<String> getCompletion(@RequestParam("promptString") String promptString) {
         CompletionRequest request = new CompletionRequest();
         request.setModel("text-davinci-003");
-        request.setPrompt("temperature of Nagpur as on today");
+        request.setPrompt(promptString);
         request.setTemperature(1);
         request.setMax_tokens(256);
         request.setTop_p(1);
@@ -36,6 +37,7 @@ public class CompletionController {
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(CompletionResponse.class)
-                .map(CompletionResponse::getText);
+                .map(CompletionResponse::getText)
+                .map(String::trim);
     }
 }
