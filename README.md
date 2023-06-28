@@ -23,14 +23,19 @@ To run the project, you need to have Java 8 or higher installed on your system. 
    cd WebClientApplication
    git checkout v4
    ```
+3. Get your Open AI key:
 
-3. Build the project using Maven:
+```
+https://platform.openai.com/account/api-keys
+```
+
+4. Build the project using Maven:
 
    ```
    ./mvnw clean install
    ```
 
-4. Run the application:
+5. Run the application:
 
    ```
    ./mvnw spring-boot:run
