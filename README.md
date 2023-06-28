@@ -23,11 +23,13 @@ To run the project, you need to have Java 8 or higher installed on your system. 
    cd WebClientApplication
    git checkout v4
    ```
-3. Get your Open AI key and update in class WebClientConfig, just a space after keyword Bearer:
+3. Get your **Open AI key**:
 
    ```
    https://platform.openai.com/account/api-keys
    ```
+   and then, update same in **class WebClientConfig**, just a space after keyword **Bearer**
+
 
 4. Build the project using Maven:
 
